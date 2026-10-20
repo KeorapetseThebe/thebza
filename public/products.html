@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Shop professional hair, grooming and styling products from BrandItWithBrandon.">
+
+    <title>BrandItWithBrandon | Products</title>
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .products-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .products-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        
+        .products-nav-link:hover {
+            background: #00d9ff;
+            border-color: #00d9ff;
+            color: #000000;
+        }
+        
+        .products-page {
+            min-height: 100vh;
+            background: var(--bg, #050607);
+            color: var(--text, #ffffff);
+        }
+        
+        .products-hero {
+            padding: 90px 20px 55px;
+            text-align: center;
+        }
+        
+        .products-hero .eyebrow {
+            margin-bottom: 14px;
+            color: var(--cyan, #00d9ff);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+        }
+        
+        .products-hero h1 {
+            margin: 0;
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+        
+        .products-hero h1 span {
+            color: var(--cyan, #00d9ff);
+        }
+        
+        .products-hero p {
+            max-width: 650px;
+            margin: 24px auto 0;
+            color: var(--text-soft, #d6d9dc);
+            line-height: 1.7;
+        }
+        
+        .products-container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto 90px;
+        }
+        
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 38px;
+        }
+        
+        .product-filter {
+            border: 1px solid rgba(0, 217, 255, 0.18);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text, #ffffff);
+            padding: 10px 17px;
+            border-radius: 999px;
+            cursor: pointer;
+            font: inherit;
+            transition: 0.2s ease;
+        }
+        
+        .product-filter:hover,
+        .product-filter.active {
+            background: var(--cyan, #00d9ff);
+            border-color: var(--cyan, #00d9ff);
+            color: #000;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+        
+        .product-card {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background: var(--surface, #0d1115);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 217, 255, 0.35);
+        }
+        
+        .product-image {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #11171d;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        
+        .product-category {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .product-info {
+            padding: 21px;
+        }
+        
+        .product-info h2 {
+            margin: 0 0 8px;
+            font-size: 21px;
+        }
+        
+        .product-description {
+            min-height: 48px;
+            margin: 0 0 18px;
+            color: var(--text-soft, #d6d9dc);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        
+        .product-price {
+            color: var(--cyan, #00d9ff);
+            font-size: 20px;
+            font-weight: 800;
+        }
+        
+        .product-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 15px;
+            border-radius: 9px;
+            background: var(--cyan, #00d9ff);
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 800;
+            transition: 0.2s ease;
+        }
+        
+        .product-button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.08);
+        }
+        
+        .no-products {
+            grid-column: 1 / -1;
+            padding: 50px;
+            text-align: center;
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            color: var(--text-soft, #d6d9dc);
+        }
+        
+        @media (max-width: 850px) {
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        
+        @media (max-width: 560px) {
+            .products-hero {
+                padding-top: 65px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-bottom {
+                align-items: stretch;
+                flex-direction: column;
+            }
+            .product-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="products-page">
+
+    <header class="hero">
+        <nav class="nav container">
+            <a href="/" class="brand">
+                Brand<span>It</span>WithBrandon
+            </a>
+
+            <div class="products-nav">
+                <a href="/" class="products-nav-link">Home</a>
+                <a href="/#booking" class="products-nav-link">Book Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="products-hero">
+            <p class="eyebrow">SHOP THE BRAND</p>
+
+            <h1>
+                Look sharp.<br>
+                <span>Stay sharp.</span>
+            </h1>
+
+            <p>
+                Professional hair, grooming and styling products selected to keep your look fresh between appointments.
+            </p>
+        </section>
+
+        <section class="products-container">
+
+            <div class="product-filters" id="productFilters"></div>
+
+            <div class="products-grid" id="productsGrid"></div>
+
+        </section>
+
+    </main>
+
+    <script src="/products.js?v=3"></script>
+
+</body>
+
+</html>

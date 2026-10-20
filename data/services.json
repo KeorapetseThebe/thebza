@@ -1,0 +1,43 @@
+[{
+        "id": "classic-cut",
+        "name": "Classic Haircut",
+        "description": "Clean cut with styling and finishing.",
+        "price": 150,
+        "duration": 45
+    },
+    {
+        "id": "fade",
+        "name": "Fade",
+        "description": "Precision fade with your preferred finish.",
+        "price": 100,
+        "duration": 60
+    },
+    {
+        "id": "cut-beard",
+        "name": "Haircut + Beard",
+        "description": "Fresh haircut and detailed beard trim.",
+        "price": 220,
+        "duration": 75
+    },
+    {
+        "id": "beard",
+        "name": "Beard Trim",
+        "description": "Shape, trim and line-up.",
+        "price": 100,
+        "duration": 30
+    },
+    {
+        "id": "kids",
+        "name": "Kids Cut",
+        "description": "Neat haircut for kids.",
+        "price": 120,
+        "duration": 40
+    },
+    {
+        "id": "premium",
+        "name": "Premium Grooming",
+        "description": "Haircut, beard, styling and finishing.",
+        "price": 280,
+        "duration": 90
+    }
+]

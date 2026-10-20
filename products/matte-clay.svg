@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+<rect width="800" height="800" fill="#11171d"/>
+<circle cx="400" cy="400" r="180" fill="#00d9ff" opacity=".12"/>
+<text x="400" y="380" text-anchor="middle" fill="#00d9ff" font-size="42" font-family="Arial">MATTE</text>
+<text x="400" y="435" text-anchor="middle" fill="#fff" font-size="28" font-family="Arial">HAIR CLAY</text>
+</svg>

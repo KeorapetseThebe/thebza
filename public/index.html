@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Book your next appointment at BrandItWithBrandon.">
+
+    <title>
+        BrandItWithBrandon | Book Now
+    </title>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <header class="hero">
+
+        <nav class="nav container">
+
+            <a href="/" class="brand">
+      Brand<span>It</span>WithBrandon
+    </a>
+
+            <a href="/admin.html" class="admin-link">
+      Admin
+    </a>
+
+        </nav>
+
+        <div class="hero-content container">
+
+            <p class="eyebrow">
+                BARBER • GROOMING • STYLE
+            </p>
+
+            <h1>
+                Look sharp.<br>
+                <span>Feel sharper.</span>
+            </h1>
+
+            <p class="hero-copy">
+                Choose your service, pick a time that works for you, and lock in your appointment.
+            </p>
+
+            <a href="#booking" class="button primary">
+      Book Now
+    </a>
+            <a href="/products.html" class="button secondary">
+      Shop Products
+    </a>
+
+        </div>
+
+    </header>
+
+    <main class="container booking-wrap" id="booking">
+
+        <section class="section-heading">
+
+            <p class="eyebrow">
+                ONLINE BOOKING
+            </p>
+
+            <h2>
+                Reserve your chair.
+            </h2>
+
+            <p>
+                Select a service to see its price, duration and available times.
+            </p>
+
+        </section>
+
+        <div id="alert" class="alert hidden"></div>
+
+        <form id="bookingForm" class="booking-card">
+
+            <!-- SERVICE -->
+
+            <div class="step">
+
+                <div class="step-title">
+
+                    <span>01</span>
+
+                    <h3>
+                        Choose your service
+                    </h3>
+
+                </div>
+
+                <div id="services" class="service-grid"></div>
+
+            </div>
+
+            <!-- DATE / TIME -->
+
+            <div class="step">
+
+                <div class="step-title">
+
+                    <span>02</span>
+
+                    <h3>
+                        Choose date & time
+                    </h3>
+
+                </div>
+
+                <div class="field-grid">
+
+                    <label>
+
+          Date
+
+          <input
+            id="date"
+            name="date"
+            type="date"
+            required
+          >
+
+        </label>
+
+                    <label>
+
+          Time
+
+        <select
+            id="time"
+             name="time"
+            required
+            disabled
+        >
+
+            <option value="">
+              Select a date first
+            </option>
+
+          </select>
+
+        </label>
+
+                </div>
+
+                <p id="availabilityNote" class="muted"></p>
+
+            </div>
+
+            <!-- CUSTOMER -->
+
+            <div class="step">
+
+                <div class="step-title">
+
+                    <span>03</span>
+
+                    <h3>
+                        Your details
+                    </h3>
+
+                </div>
+
+                <div class="field-grid">
+
+                    <label>
+
+          Full name
+
+          <input
+            name="customerName"
+            type="text"
+            placeholder="Your name"
+            maxlength="80"
+            required
+          >
+
+        </label>
+
+                    <label>
+
+          WhatsApp / phone
+
+          <input
+            name="customerPhone"
+            type="tel"
+            placeholder="+27..."
+            maxlength="30"
+            required
+          >
+
+        </label>
+
+                </div>
+
+                <label>
+
+        Notes
+        <span class="optional">
+          (optional)
+        </span>
+
+        <textarea
+          name="notes"
+          rows="3"
+          maxlength="500"
+          placeholder="Anything Brandon should know?"
+        ></textarea>
+
+      </label>
+
+            </div>
+
+            <!-- SUMMARY -->
+
+            <aside class="summary">
+
+                <div>
+
+                    <p class="muted">
+                        YOUR APPOINTMENT
+                    </p>
+
+                    <h3 id="summaryService">
+                        Select a service
+                    </h3>
+
+                    <p id="summaryDate">
+                        Select a date and time
+                    </p>
+
+                </div>
+
+                <strong id="summaryPrice">
+        R0
+      </strong>
+
+            </aside>
+
+            <button id="submitButton" class="button primary full" type="submit">
+      Confirm Appointment
+    </button>
+
+        </form>
+
+    </main>
+
+    <footer>
+
+        <div class="container footer-inner">
+
+            <strong>
+      BrandItWithBrandon
+    </strong>
+
+            <span>
+      © <span id="year"></span> All rights reserved.
+            </span>
+
+        </div>
+
+    </footer>
+
+    <script src="/app.js"></script>
+
+</body>
+
+</html>

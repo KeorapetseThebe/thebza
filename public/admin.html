@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandItWithBrandon | Admin</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <main class="container admin-wrap">
+        <a href="/" class="back">← Back to booking site</a>
+
+        <section id="loginPanel" class="booking-card admin-login">
+            <p class="eyebrow">STAFF PORTAL</p>
+            <h1>BrandItWithBrandon Admin</h1>
+            <p class="muted">Sign in to manage appointments. Owner access includes services, prices and website appearance.</p>
+            <div id="adminAlert" class="alert hidden"></div>
+            <div class="field-grid">
+                <label>Username<input id="username" autocomplete="username" placeholder="Username"></label>
+                <label>Password<input id="password" type="password" autocomplete="current-password" placeholder="Password"></label>
+            </div>
+            <button id="loginButton" class="button primary">Sign in</button>
+        </section>
+
+        <section id="dashboard" class="hidden">
+            <div class="admin-head">
+                <div>
+                    <p class="eyebrow">DASHBOARD</p>
+                    <h1 id="welcomeTitle">Appointments</h1>
+                    <p id="roleText" class="muted"></p>
+                </div>
+                <button id="logoutButton" class="button secondary">Log out</button>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="appointments">Appointments</button>
+                <button class="admin-tab owner-only" data-tab="services">Services & Prices</button>
+                <button class="admin-tab owner-only" data-tab="products">Products</button>
+                <button class="admin-tab owner-only" data-tab="appearance">Website Appearance</button>
+            </div>
+            <section id="tab-appointments" class="admin-tab-panel">
+                <div class="admin-toolbar admin-toolbar-grid">
+                    <label>Date<input id="filterDate" type="date"></label>
+                    <label>Status<select id="filterStatus"><option value="">All</option><option value="confirmed">Confirmed</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></label>
+                    <button id="clearFilters" class="button secondary">All appointments</button>
+                    <button id="refresh" class="button secondary">Refresh</button>
+                </div>
+                <div id="bookingStats" class="admin-stats"></div>
+                <div id="bookings" class="booking-list"></div>
+            </section>
+
+            <section id="tab-services" class="admin-tab-panel hidden owner-only">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">OWNER ONLY</p>
+                    <h2>Services & prices</h2>
+                    <p>Change prices and durations without opening VS Code.</p>
+                </div>
+                <div id="servicesAdmin" class="service-admin-list"></div>
+                <div class="booking-card add-service-card">
+                    <h3>Add a new service</h3>
+                    <form id="addServiceForm">
+                        <div class="field-grid">
+                            <label>Service name<input id="newName" required></label>
+                            <label>Price (R)<input id="newPrice" type="number" min="0" required></label>
+                        </div>
+                        <div class="field-grid">
+                            <label>Duration (minutes)<input id="newDuration" type="number" min="5" step="5" value="30" required></label>
+                            <label>Description<input id="newDescription"></label>
+                        </div>
+                        <button class="button primary" type="submit">Add service</button>
+                    </form>
+                </div>
+            </section>
+            <section id="tab-products" class="admin-tab-panel hidden owner-only">
+
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">OWNER ONLY</p>
+                    <h2>Products</h2>
+                    <p>Add and manage the hair products sold by the barbershop.</p>
+                </div>
+
+                <div id="productAdminAlert" class="alert hidden"></div>
+
+                <div class="booking-card">
+
+                    <h3 id="productFormTitle">Add Product</h3>
+
+                    <form id="productForm">
+
+                        <input type="hidden" id="productId">
+
+                        <div class="field-grid">
+
+                            <label>
+                    Product name
+                    <input
+                        id="productName"
+                        type="text"
+                        placeholder="e.g. Matte Hair Clay"
+                        required
+                    >
+                </label>
+
+                            <label>
+                    Category
+                    <select id="productCategory">
+                        <option value="Styling">Styling</option>
+                        <option value="Hair Care">Hair Care</option>
+                        <option value="Beard Care">Beard Care</option>
+                        <option value="General">General</option>
+                    </select>
+                </label>
+
+                        </div>
+
+                        <div class="field-grid">
+
+                            <label>
+                    Price (R)
+                    <input
+                        id="productPrice"
+                        type="number"
+                        min="0"
+                        step="1"
+                        placeholder="180"
+                        required
+                    >
+                </label>
+
+                            <label>
+                    Product picture
+                    <input
+                        id="productImage"
+                        type="file"
+                        accept="image/*"
+                    >
+                </label>
+
+                        </div>
+
+                        <label>
+                Description
+                <textarea
+                    id="productDescription"
+                    rows="4"
+                    placeholder="Describe the product..."
+                ></textarea>
+            </label>
+
+                        <div class="admin-actions">
+
+                            <button type="submit" id="saveProductButton" class="button primary">
+                    Add Product
+                </button>
+
+                            <button type="button" id="cancelProductEdit" class="button secondary hidden">
+                    Cancel Edit
+                </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="booking-card">
+
+                    <div class="section-heading compact-heading">
+                        <h3>Current Products</h3>
+                        <p>Products added here appear on the public Products page.</p>
+                    </div>
+
+                    <div id="productsAdminList" class="products-admin-list">
+                        <p class="muted">No products added yet.</p>
+                    </div>
+
+                </div>
+
+            </section>
+            <section id="tab-appearance" class="admin-tab-panel hidden owner-only">
+                <div class="section-heading compact-heading">
+                    <p class="eyebrow">OWNER ONLY</p>
+                    <h2>Website appearance</h2>
+                    <p>Upload a new hero background image for the homepage.</p>
+                </div>
+                <div class="booking-card appearance-card">
+                    <div id="backgroundPreview" class="background-preview"></div>
+                    <form id="backgroundForm">
+                        <label>Hero background image
+              <input id="backgroundFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+            </label>
+                        <p class="muted">Recommended: a wide landscape image. Maximum 8 MB.</p>
+                        <button class="button primary" type="submit">Upload background</button>
+                    </form>
+                </div>
+                <div class="booking-card appearance-card">
+                    <div class="section-heading compact-heading">
+                        <h3>Products page background</h3>
+                        <p>Change the hero background image displayed on the Products page.</p>
+                    </div>
+                    <div id="productsBackgroundPreview" class="background-preview"></div>
+                    <form id="productsBackgroundForm">
+                        <label>Products hero background image
+                            <input id="productsBackgroundFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+                        </label>
+                        <p class="muted">Recommended: a wide landscape image. Maximum 8 MB.</p>
+                        <button class="button primary" type="submit">Upload Products Background</button>
+                    </form>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="/admin.js?v=5"></script>
+</body>
+
+</html>
